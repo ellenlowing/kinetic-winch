@@ -2,8 +2,8 @@
 #include <ArduinoJson.h>
 #include <string.h>
  
-const char* ssid = "Butennis";
-const char* password =  "smilingfamily";
+const char* ssid = "BU Guest (unencrypted)";
+//const char* password =  "smilingfamily";
  
 WiFiServer wifiServer(8090);
 
@@ -18,7 +18,7 @@ void setup() {
  
   delay(1000);
  
-  WiFi.begin(ssid, password);
+  WiFi.begin(ssid);
   
  // Connecting to WIFI
   while (WiFi.status() != WL_CONNECTED) {
@@ -39,6 +39,7 @@ void loop() {
 
   // If available, connect to the server and received the data that is being sent from the server side
   if (client) {
+    Serial.println("Connected to wifi server");
  
     while (client.connected()) {
  
@@ -69,11 +70,8 @@ void loop() {
     Serial.println(rpm);
     Serial.print("dir: ");
     Serial.println(dir);
-    delay(5000);
+ //   delay(5000);
     entry = "\0";
- 
-    client.stop();
-    Serial.println("Client disconnected");
  
   }
 }
