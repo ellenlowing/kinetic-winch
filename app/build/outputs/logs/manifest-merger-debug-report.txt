@@ -1,0 +1,161 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:2:1-22:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/62eb49537a0a0bc9dadf2386fbe9f54e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/d09838aaac80b2f1cfb38f02d2a06bc3/AndroidManifest.xml:2:1-11:12
+MERGED from [:openCVLibrary345] /Users/berkgur/AndroidStudioProjects/OpencvTutorial/openCVLibrary345/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/a990235ce9f5be5a70f22b7350b37b5d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/e564d2740f9fd2815dc29cce06bbed1b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/cc30ddae2e2a5768e2d23e7937d27068/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/7bed9a5cace703a51faca97d0aaa1171/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/87825cc41ce19e861804fc739f4e2a73/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/12123b09f23c928c6b0425fc45c31822/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/370fe8e5dc3ba6464f2e2a763e28fbbb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/bb8cd0c6d8c4f5add51d61c8bc42c666/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/c1ac18f3c4262cd1201341af242e6aa0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/07bc1e09bea0b9baca89d6f14fe7d12e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/60fe580fce06e95febcf5c31beda68cc/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/4315081410d3f07352dc7646e11ac4fe/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/f5f2a9abe69a835b8b4075fbcce4b0a9/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/ef9d2fda6e01dfa61139388f97da7ba6/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/32a5480fc5ae706a212bfa8ff35940f8/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/306066655110acbc28a42e23611f759a/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/35ebe8d0c9319809e4e0c551f347e448/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/26bac1ea75c2a15ea24f0a12e7eff02b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/5f54c4691f13e803f7a30ab9ac9586b7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/f9cee2c30b90f4c79b683eddd05edaf0/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/a3462f3028000618b20b13347fc442bf/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/fb2b6c925fc4402e14497e1689495d34/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/6351245ab7289503fba1ecc1c6cca786/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/63a63eb157962e1091ef8651f20793be/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/723ad39e4a1383ba932b7423b023b91a/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:2:1-22:12
+	package
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:3:5-46
+		INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:2:1-22:12
+		INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:2:1-22:12
+		INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.CAMERA
+ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:4:5-64
+	android:name
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:4:22-62
+application
+ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:6:5-20:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/d09838aaac80b2f1cfb38f02d2a06bc3/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/d09838aaac80b2f1cfb38f02d2a06bc3/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-compat:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/ef9d2fda6e01dfa61139388f97da7ba6/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/ef9d2fda6e01dfa61139388f97da7ba6/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/32a5480fc5ae706a212bfa8ff35940f8/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/32a5480fc5ae706a212bfa8ff35940f8/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/ef9d2fda6e01dfa61139388f97da7ba6/AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:11:9-35
+	android:label
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:9:9-41
+	android:roundIcon
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:10:9-54
+	android:icon
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:8:9-43
+	android:allowBackup
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:7:9-35
+	android:theme
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:12:9-40
+activity#com.test.berkgur.opencvtutorial.MainActivity
+ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:13:9-19:20
+	android:name
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:13:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:14:13-18:29
+action#android.intent.action.MAIN
+ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:15:17-69
+	android:name
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:15:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:17:17-77
+	android:name
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml:17:27-74
+uses-sdk
+INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
+INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/62eb49537a0a0bc9dadf2386fbe9f54e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/62eb49537a0a0bc9dadf2386fbe9f54e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/d09838aaac80b2f1cfb38f02d2a06bc3/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/d09838aaac80b2f1cfb38f02d2a06bc3/AndroidManifest.xml:5:5-7:41
+MERGED from [:openCVLibrary345] /Users/berkgur/AndroidStudioProjects/OpencvTutorial/openCVLibrary345/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:openCVLibrary345] /Users/berkgur/AndroidStudioProjects/OpencvTutorial/openCVLibrary345/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/a990235ce9f5be5a70f22b7350b37b5d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/a990235ce9f5be5a70f22b7350b37b5d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/e564d2740f9fd2815dc29cce06bbed1b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/e564d2740f9fd2815dc29cce06bbed1b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/cc30ddae2e2a5768e2d23e7937d27068/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/cc30ddae2e2a5768e2d23e7937d27068/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/7bed9a5cace703a51faca97d0aaa1171/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/7bed9a5cace703a51faca97d0aaa1171/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/87825cc41ce19e861804fc739f4e2a73/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/87825cc41ce19e861804fc739f4e2a73/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/12123b09f23c928c6b0425fc45c31822/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/12123b09f23c928c6b0425fc45c31822/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/370fe8e5dc3ba6464f2e2a763e28fbbb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/370fe8e5dc3ba6464f2e2a763e28fbbb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/bb8cd0c6d8c4f5add51d61c8bc42c666/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/bb8cd0c6d8c4f5add51d61c8bc42c666/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/c1ac18f3c4262cd1201341af242e6aa0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/c1ac18f3c4262cd1201341af242e6aa0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/07bc1e09bea0b9baca89d6f14fe7d12e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/07bc1e09bea0b9baca89d6f14fe7d12e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/60fe580fce06e95febcf5c31beda68cc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/60fe580fce06e95febcf5c31beda68cc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/4315081410d3f07352dc7646e11ac4fe/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/4315081410d3f07352dc7646e11ac4fe/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/f5f2a9abe69a835b8b4075fbcce4b0a9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/f5f2a9abe69a835b8b4075fbcce4b0a9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/ef9d2fda6e01dfa61139388f97da7ba6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/ef9d2fda6e01dfa61139388f97da7ba6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/32a5480fc5ae706a212bfa8ff35940f8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/32a5480fc5ae706a212bfa8ff35940f8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/306066655110acbc28a42e23611f759a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/306066655110acbc28a42e23611f759a/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/35ebe8d0c9319809e4e0c551f347e448/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/35ebe8d0c9319809e4e0c551f347e448/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/26bac1ea75c2a15ea24f0a12e7eff02b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/26bac1ea75c2a15ea24f0a12e7eff02b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/5f54c4691f13e803f7a30ab9ac9586b7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/5f54c4691f13e803f7a30ab9ac9586b7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/f9cee2c30b90f4c79b683eddd05edaf0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/f9cee2c30b90f4c79b683eddd05edaf0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/a3462f3028000618b20b13347fc442bf/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/a3462f3028000618b20b13347fc442bf/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/fb2b6c925fc4402e14497e1689495d34/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/fb2b6c925fc4402e14497e1689495d34/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/6351245ab7289503fba1ecc1c6cca786/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/6351245ab7289503fba1ecc1c6cca786/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/63a63eb157962e1091ef8651f20793be/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/63a63eb157962e1091ef8651f20793be/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/723ad39e4a1383ba932b7423b023b91a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/berkgur/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/723ad39e4a1383ba932b7423b023b91a/AndroidManifest.xml:20:5-44
+INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
+INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
+		ADDED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/berkgur/AndroidStudioProjects/OpencvTutorial/app/src/main/AndroidManifest.xml
