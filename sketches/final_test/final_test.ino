@@ -1,7 +1,12 @@
+
 #include <pthread.h>
 #include <WiFi.h>
 #include <ArduinoJson.h>
 #include <string.h>
+#include <NeoPixelBrightnessBus.h>
+#include <NeoPixelBus.h>
+#include <NeoPixelAnimator.h>
+
 #define ENABLE 12
 #define STEP 15
 #define DIR 33
@@ -16,12 +21,19 @@ pthread_t threads[2];
 // Wifi variables
 const char* ssid = "BU Guest (unencrypted)";
 WiFiServer wifiServer(8090);
-String entry;
+String entry = "\0";
+String prevEntry = "\0";
 
 // Motor variables
 int speed = 4000; // 
 int brightness = 0;
 int windMode = 0;
+
+// LED variables
+const uint16_t numPixels = 3;
+const uint16_t ledPin = 21;
+NeoPixelBus<NeoGrbFeature, Neo800KbpsMethod> strip(numPixels, ledPin);
+int r, g, b;
 
 void * clientReceive(void *) {
   while(1) {
@@ -38,32 +50,26 @@ void * clientReceive(void *) {
           entry.concat(c);
         }
 
+        if(entry.length() != 13) {
+          entry = prevEntry;
+        }
+        
         delay(10);
       }
   
       // Parse the data to extract the inputs
-    
-      Serial.println(entry);
-//      StaticJsonBuffer<200> jsonBuffer;
-//      JsonObject& obj = jsonBuffer.createObject();
-//      parsing(obj);
-//      int r = getR(obj);
-//      int b = getB(obj);
-//      int g = getG(obj);
-//      int rpm = getRPM(obj);
-//      windMode = getDir(obj);
-//      Serial.print("red: ");
-//      Serial.println(r);
-//      Serial.print("blue: ");
-//      Serial.println(b);
-//      Serial.print("green: ");
-//      Serial.println(g);
-//      Serial.print("speed: ");
-//      Serial.println(rpm);
-//      Serial.print("dir: ");
-//      Serial.println(windMode);
+   
+      StaticJsonBuffer<200> jsonBuffer;
+      JsonObject& obj = jsonBuffer.createObject();
+      parsing(obj);
+      r = getR(obj);
+      b = getB(obj);
+      g = getG(obj);
+      int rpm = getRPM(obj);
+      windMode = getDir(obj);
+      prevEntry = entry;
       entry = "\0";
-//      jsonBuffer.clear();
+      jsonBuffer.clear();
 
       client.stop();
     } 
@@ -81,7 +87,7 @@ void parsing(JsonObject& obj ) {
   obj["rpm"] = entry.substring(9, 12);
   obj["dir"] = entry.substring(12);
 
-  obj.prettyPrintTo(Serial);
+//  obj.prettyPrintTo(Serial);
 
 }
 
@@ -143,6 +149,18 @@ void stepDown() {
   stepNow(STEPS_PER_ROTATION);
 }
 
+// LED control
+void* ledControl(void *) {
+  while(1) {
+    for(int i = 0; i < numPixels; i++) {
+      RgbColor color(r, g, b);
+      strip.SetPixelColor(i, color);
+    }
+    strip.Show();
+    delay(10);
+  }
+}
+
 void setup() {
   Serial.begin(115200);
 
@@ -157,16 +175,22 @@ void setup() {
   wifiServer.begin();
 
   // Motor config
-  Serial.println("Enter 1 to unwind cable, 0 to wind cable");
-  pinMode(STEP, OUTPUT);
-  pinMode(DIR, OUTPUT);
-  pinMode(MS1, OUTPUT);
-  pinMode(MS2, OUTPUT);
-  pinMode(MS3, OUTPUT);
+//  Serial.println("Enter 1 to unwind cable, 0 to wind cable");
+//  pinMode(STEP, OUTPUT);
+//  pinMode(DIR, OUTPUT);
+//  pinMode(MS1, OUTPUT);
+//  pinMode(MS2, OUTPUT);
+//  pinMode(MS3, OUTPUT);
+
+  // LED config
+  strip.Begin();
+  strip.Show();
 
   // Thread config
-  int thread0 = pthread_create(&threads[0], NULL, motorControl, NULL);
+//  int thread0 = pthread_create(&threads[0], NULL, motorControl, NULL);
+  int thread0 = pthread_create(&threads[0], NULL, ledControl, NULL);
   int thread1 = pthread_create(&threads[1], NULL, clientReceive, NULL);
+  
   if (thread0) {
     Serial.println("thread 0 has error");
   }
