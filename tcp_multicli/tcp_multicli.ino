@@ -15,9 +15,10 @@ int t = 0;
 char msg[32];
 char *res;
 
+const uint16_t port0 = 8095;
 const uint16_t port1 = 8090;
-const uint16_t port2 = 8095;
-const char * host = "10.192.225.110";
+const char * host0 = "10.192.237.85";
+const char * host1 = "10.192.237.123";
 
 const uint16_t maxSaturation = 128;
 
@@ -56,16 +57,16 @@ void setup() {
 
   // create thread connection
   thread0 = pthread_create(&threads[0], NULL, connection0, (void *)i);
-  //thread1 = pthread_create(&threads[1], NULL, connection1, (void *)j);
+  thread1 = pthread_create(&threads[1], NULL, connection1, (void *)j);
 
   // check to see if error has occured
   if (thread0) {
          Serial.println("An error has occurred thread0");
       }
 
-//  if (thread1) {
-//         Serial.println("An error has occurred thread1");
-//      }
+  if (thread1) {
+         Serial.println("An error has occurred thread1");
+      }
  
 }
 
@@ -86,13 +87,13 @@ void *connection0(void *threadId) {
 
     if(millis() > (delay_time + time_2)) {
       
-      while (!client.connect(host, 8090)) {
+      while (!client.connect(host0, port0)) {
         Serial.println("Connection to host 1 failed");
   
         delay(1000);
       }
 
-      Serial.println("Connected to server 1 successful!");
+      Serial.println("Connected to server 0 successful!");
       
       Serial.println("inside the sending");
       // setting values for 
@@ -103,8 +104,8 @@ void *connection0(void *threadId) {
       uint16_t g = fade(rate, 10);
       //uint16_t b = random(0,255);
       //uint16_t g = random(0,255);
-      int s = random(0,600);
-      int d = random(0,2);
+      int s = 100;
+      int d = 1;
     
       // Setting parameters to string
       setR(r);
@@ -113,23 +114,23 @@ void *connection0(void *threadId) {
       setRPM(s);
       setDir(d);
 
-      Serial.print("red: ");
-      Serial.println(r);
-
-      Serial.print("blue: ");
-      Serial.println(b);
-
-      Serial.print("green: ");
-      Serial.println(g);
-
-      Serial.print("speed: ");
-      Serial.println(s);
-      
-      Serial.print("dir: ");
-      Serial.println(d);
+//      Serial.print("red: ");
+//      Serial.println(r);
+//
+//      Serial.print("blue: ");
+//      Serial.println(b);
+//
+//      Serial.print("green: ");
+//      Serial.println(g);
+//
+//      Serial.print("speed: ");
+//      Serial.println(s);
+//      
+//      Serial.print("dir: ");
+//      Serial.println(d);
 
       res = msg;
-      Serial.print("message ");
+      Serial.print("message for server 0 ");
       Serial.println(res);
       
       client.print(res);
@@ -159,20 +160,67 @@ void *connection1(void *threadId) {
 
   WiFiClient client;
   
-  while (!client.connect(host, port2)) {
-      Serial.println("Connection to host 2 failed");
+  while( true ) {
 
-      delay(1000);
-  }
+      /*
+     * Testing data to see if it is being sent and recveived
+     * Inputting random values for inputs
+     * Sending to client side as a string
+     */
 
-  while ( client ) {
-    Serial.println("Connected to server 2 successful!");
-
-    client.print("1234567890001");
-  }
+    if(millis() > (delay_time + time_2)) {
+      
+      while (!client.connect(host1, port1)) {
+        Serial.println("Connection to host 1 failed");
   
-    Serial.println("this is from connection 1");
-    Serial.println((int)threadId);
+        delay(1000);
+      }
+
+      Serial.println("Connected to server 1 successful!");
+      
+      Serial.println("inside the sending");
+      // setting values for 
+      float rate = (1.0 / (float)delay_time) * 5.0;   // 5.0 speeds up the fading
+      float offset = 0;
+      uint16_t r = fade(rate, offset); 
+      uint16_t b = fade(rate, 100);
+      uint16_t g = fade(rate, 10);
+      //uint16_t b = random(0,255);
+      //uint16_t g = random(0,255);
+      int s = 100;
+      int d = 1;
+    
+      // Setting parameters to string
+      setR(r);
+      setB(b);
+      setG(g);
+      setRPM(s);
+      setDir(d);
+
+//      Serial.print("red: ");
+//      Serial.println(r);
+//
+//      Serial.print("blue: ");
+//      Serial.println(b);
+//
+//      Serial.print("green: ");
+//      Serial.println(g);
+//
+//      Serial.print("speed: ");
+//      Serial.println(s);
+//      
+//      Serial.print("dir: ");
+//      Serial.println(d);
+
+      res = msg;
+      Serial.print("message for client 1");
+      Serial.println(res);
+      
+      client.print(res);
+      time_2 = millis();
+      t = t + 1;
+    }
+  }
 }
 
 void loop() {
