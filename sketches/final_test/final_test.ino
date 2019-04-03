@@ -16,11 +16,11 @@
 #define STEPS_PER_ROTATION 200
 
 // Thread variables
-pthread_t threads[2];
+pthread_t threads[3];
 
 // Wifi variables
 const char* ssid = "BU Guest (unencrypted)";
-WiFiServer wifiServer(8090);
+WiFiServer wifiServer(8090);//8090 for board 1, 8095 for board 2
 String entry = "\0";
 String prevEntry = "\0";
 
@@ -175,27 +175,30 @@ void setup() {
   wifiServer.begin();
 
   // Motor config
-//  Serial.println("Enter 1 to unwind cable, 0 to wind cable");
-//  pinMode(STEP, OUTPUT);
-//  pinMode(DIR, OUTPUT);
-//  pinMode(MS1, OUTPUT);
-//  pinMode(MS2, OUTPUT);
-//  pinMode(MS3, OUTPUT);
+  Serial.println("Enter 1 to unwind cable, 0 to wind cable");
+  pinMode(STEP, OUTPUT);
+  pinMode(DIR, OUTPUT);
+  pinMode(MS1, OUTPUT);
+  pinMode(MS2, OUTPUT);
+  pinMode(MS3, OUTPUT);
 
   // LED config
   strip.Begin();
   strip.Show();
 
   // Thread config
-//  int thread0 = pthread_create(&threads[0], NULL, motorControl, NULL);
   int thread0 = pthread_create(&threads[0], NULL, ledControl, NULL);
   int thread1 = pthread_create(&threads[1], NULL, clientReceive, NULL);
+  int thread2 = pthread_create(&threads[2], NULL, motorControl, NULL);
   
   if (thread0) {
     Serial.println("thread 0 has error");
   }
   if (thread1) {
     Serial.println("thread 1 has error");
+  }
+  if(thread2) {
+    Serial.println("thread 2 has error");
   }
 }
 
