@@ -5,20 +5,20 @@
 /*
  * Timer function
  */
-unsigned long time_1 = 0;
-unsigned long time_2 = 0;
+unsigned long time0 = 0;
+unsigned long time1 = 0;
 unsigned long delay_time = 100;
 unsigned long dif;
-char ssid[] = "BU Guest (unencrypted)"; //  your network SSID (name)
-
-int t = 0;
+int inc0 = 0;
+int inc1 = 0;
 char msg[32];
 char *res;
 
-const uint16_t port0 = 8095;
-const uint16_t port1 = 8090;
+char ssid[] = "BU Guest (unencrypted)"; //  your network SSID (name)
+const uint16_t port0 = 8090;
+const uint16_t port1 = 8099;
 const char * host0 = "10.192.237.85";
-const char * host1 = "10.192.237.123";
+const char * host1 = "10.192.235.138";
 
 const uint16_t maxSaturation = 128;
 
@@ -85,7 +85,7 @@ void *connection0(void *threadId) {
      * Sending to client side as a string
      */
 
-    if(millis() > (delay_time + time_2)) {
+    if(millis() > (delay_time + time0)) {
       
       while (!client.connect(host0, port0)) {
         Serial.println("Connection to host 1 failed");
@@ -99,9 +99,9 @@ void *connection0(void *threadId) {
       // setting values for 
       float rate = (1.0 / (float)delay_time) * 5.0;   // 5.0 speeds up the fading
       float offset = 0;
-      uint16_t r = fade(rate, offset); 
-      uint16_t b = fade(rate, 100);
-      uint16_t g = fade(rate, 10);
+      uint16_t r = fade(inc0, rate, offset); 
+      uint16_t b = fade(inc0, rate, 100);
+      uint16_t g = fade(inc0, rate, 10);
       //uint16_t b = random(0,255);
       //uint16_t g = random(0,255);
       int s = 100;
@@ -130,27 +130,14 @@ void *connection0(void *threadId) {
 //      Serial.println(d);
 
       res = msg;
-      Serial.print("message for server 0 ");
+      Serial.print("message for client 0 ");
       Serial.println(res);
       
       client.print(res);
-      time_2 = millis();
-      t = t + 1;
+      time0 = millis();
+      inc0 = inc0 + 1;
     }
   }
-}
-
-/**
- * Fade function
- */
-uint16_t fade(float rate, float offset) {
-  uint16_t brightness = 0;
-  brightness = (sin(t * rate + offset) + 1) * maxSaturation / 2;
-
-//  Serial.print("Red value in fade function");
-//  Serial.println(brightness);
- 
-  return brightness;
 }
 
 /**
@@ -168,7 +155,7 @@ void *connection1(void *threadId) {
      * Sending to client side as a string
      */
 
-    if(millis() > (delay_time + time_2)) {
+    if(millis() > (delay_time + time1)) {
       
       while (!client.connect(host1, port1)) {
         Serial.println("Connection to host 1 failed");
@@ -182,9 +169,9 @@ void *connection1(void *threadId) {
       // setting values for 
       float rate = (1.0 / (float)delay_time) * 5.0;   // 5.0 speeds up the fading
       float offset = 0;
-      uint16_t r = fade(rate, offset); 
-      uint16_t b = fade(rate, 100);
-      uint16_t g = fade(rate, 10);
+      uint16_t r = fade(inc1, rate, offset); 
+      uint16_t b = fade(inc1, rate, 100);
+      uint16_t g = fade(inc1, rate, 10);
       //uint16_t b = random(0,255);
       //uint16_t g = random(0,255);
       int s = 100;
@@ -217,8 +204,8 @@ void *connection1(void *threadId) {
       Serial.println(res);
       
       client.print(res);
-      time_2 = millis();
-      t = t + 1;
+      time1 = millis();
+      inc1 = inc1 + 1;
     }
   }
 }
@@ -226,10 +213,18 @@ void *connection1(void *threadId) {
 void loop() {
 }
 
-/*
- * Keep track of how long the time has been elasped since last set
- * 
+
+
+/**
+ * Fade function
  */
+uint16_t fade(int inc, float rate, float offset) {
+  uint16_t brightness = 0;
+  brightness = (sin((float)inc * rate + offset) + 1) * maxSaturation / 2;
+ 
+  return brightness;
+}
+
 void setR( uint16_t value ) {
   char rd[4];
   itoa(value,rd,10);
@@ -324,8 +319,6 @@ void setRPM( int value ) {
   }
 }
 
-// millis -> returns elapsed time since program starts
-// make sure that direction doesnt change too fast
 void setDir( int value ) {
   char d = '0' + value;
   msg[12] = d;
