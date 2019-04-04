@@ -16,8 +16,6 @@ int inc1 = 0;
 /*
  * Communication to Winches variables
  */
-//char msg[32];
-//char *res;
 char ssid[] = "BU Guest (unencrypted)"; //  your network SSID (name)
 const uint16_t port0 = 8090;
 const uint16_t port1 = 8099;
@@ -48,18 +46,14 @@ const uint8_t maxSaturation = 128;
 uint8_t r0 = 0;
 uint8_t g0 = 0;
 uint8_t b0 = 0;
+int d0 = 0;
 uint8_t r1 = 0;
 uint8_t g1 = 0;
 uint8_t b1 = 0;
+int d1 = 0;
 uint8_t globalR = 0;
 uint8_t globalG = 0;
 uint8_t globalB = 0;
-
-/*
- * Motor variables
- */
-int rpm = 0;
-int dir = 0;
 
 void setup() {
   // starting serial monitor
@@ -83,10 +77,10 @@ void setup() {
   int thread1;
   int thread2;
   thread0 = pthread_create(&threads[0], NULL, touchosc_server, NULL);
-//  thread1 = pthread_create(&threads[1], NULL, connection0, NULL);
+  thread1 = pthread_create(&threads[1], NULL, connection0, NULL);
   thread2 = pthread_create(&threads[2], NULL, connection1, NULL);
   if (thread0) { Serial.println("An error has occurred thread0");}
-//  if (thread1) { Serial.println("An error has occurred thread1");}
+  if (thread1) { Serial.println("An error has occurred thread1");}
   if (thread2) { Serial.println("An error has occurred thread2 (touchosc)");}
  
 }
@@ -96,47 +90,40 @@ void setup() {
  */
 void *connection0(void *) {
 
-  WiFiClient client;
   char msg[32];
-  char *res;
+  String res;
   
   while( true ) {
 
-      /*
-     * Testing data to see if it is being sent and recveived
-     * Inputting random values for inputs
-     * Sending to client side as a string
-     */
-
     if(millis() > (delay_time + time0)) {
-      
-      while (!client.connect(host0, port0)) {
-        Serial.println("Connection to host 1 failed");
-  
-        delay(100);
-      }
-      
-      // setting values for 
-      float rate = (1.0 / (float)delay_time) * 5.0;   // 5.0 speeds up the fading
-      float offset = 0;
-      uint8_t r = fade(inc0, rate, offset); 
-      uint8_t b = fade(inc0, rate, 100);
-      uint8_t g = fade(inc0, rate, 10);
-      int s = motorSpeed;
-      int d = 1;
-    
-      // Setting parameters to string
-      setR(msg, r);
-      setB(msg, b);
-      setG(msg, g);
-      setRPM(msg, s);
-      setDir(msg, d);
 
-      res = msg;
-      client.print(res);
-      time0 = millis();
-      inc0 = inc0 + 1;
+      if(playing) {
+
+        switchPresets(0, inc0);
+        int s = motorSpeed;
+      
+        // Setting parameters to string
+        setR(msg, r0);
+        setB(msg, b0);
+        setG(msg, g0);
+        setRPM(msg, s);
+        setDir(msg, d0);
+  
+        res = msg;
+        osc.send(host0, osc_port0, "/client/0", res);
+        time0 = millis();
+        inc0 = inc0 + 1;
+
+      } else {
+        setDir(msg, 2);
+        res = msg;
+        
+        Serial.println(res);
+        osc.send(host0, osc_port0, "/client/1", res);
+      }
     }
+
+    delay(10);
   }
 }
 
@@ -145,7 +132,6 @@ void *connection0(void *) {
  */
 void *connection1(void *) {
 
-  WiFiClient client;
   char msg[32];
   String res;
   
@@ -155,23 +141,25 @@ void *connection1(void *) {
 
       if(playing) {
 
-      
         switchPresets(1, inc1);
         int s = motorSpeed;
-        int d = 1;
       
         // Setting parameters to string
         setR(msg, r1);
         setB(msg, b1);
         setG(msg, g1);
         setRPM(msg, s);
-        setDir(msg, d);
+        setDir(msg, d1);
   
         res = msg;
         osc.send(host1, osc_port1, "/client/1", res);
         time1 = millis();
         inc1 = inc1 + 1;
 
+      } else {
+        setDir(msg, 2);
+        res = msg;
+        osc.send(host1, osc_port1, "/client/1", res);
       }
     }
 
@@ -180,7 +168,8 @@ void *connection1(void *) {
 }
 
 void *touchosc_server (void *) {
-  
+
+  // listening to touchosc commands
   osc.subscribe("/1/*", [](OscMessage& m) {
     String addr = m.address();
     String tag = addr.substring(3);
@@ -231,8 +220,16 @@ void *touchosc_server (void *) {
       
     } else if ( tag.equals("pause") ) {
       // 1: pause, 0: play
-      if(val == 1.0) playing = false;
-      else playing = true;
+      if(val == 1.0) {
+        playing = false;
+        d0 = 2;
+        d1 = 2;
+      }
+      else {
+        playing = true;
+        d0 = 0;
+        d1 = 0;
+      }
       if(playing) Serial.println("playing");
       else Serial.println("pause");
       

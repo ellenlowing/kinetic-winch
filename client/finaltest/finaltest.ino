@@ -15,8 +15,8 @@ pthread_t threads[3];
 const char *ssid = "BU Guest (unencrypted)";
 OscWiFi osc;
 const char * host = "10.192.228.184";
-const int recv_port = 3000;
-const int send_port = 3111;
+const int recv_port = 2000;
+const int send_port = 2111;
 String oscMessage;
 
 // LED variables
@@ -28,6 +28,13 @@ int g = 0;
 int b = 0;
 
 // Motor variables
+const int ENABLE = 12;
+const int STEP = 15;
+const int DIR = 33;
+const int MS1 = 35;
+const int MS2 = 32;
+const int MS3 = 14;
+const int STEPS_PER_ROTATION = 200;
 int speed = 0;
 int direction = 0;
 
@@ -53,6 +60,7 @@ void * getOscMessage ( void * ) {
     str = oscMessage.substring(12); // direction
     str.toCharArray(buf, 2);
     sscanf(buf, "%d", &direction);
+    Serial.println(direction);
 
     delay(10);
   }
@@ -70,6 +78,42 @@ void* ledControl(void *) {
   }
 }
 
+// Motor control
+void* motorControl(void *) {
+  while(1) {
+    if (direction == 0) {
+      stepUp();
+    } else if ( direction == 1) {
+      stepDown();
+    } else {
+      
+    }
+  }
+}
+
+void stepNow(int totalSteps) {
+  for (int i = 0; i < totalSteps; ++i) {
+    digitalWrite(STEP, HIGH);
+    delayMicroseconds(speed);
+    digitalWrite(STEP, LOW);
+    delayMicroseconds(speed);
+  }
+}
+
+// winding cable back up
+void stepUp() {
+//  Serial.println("winding cable up");
+  digitalWrite(DIR, LOW);
+  stepNow(STEPS_PER_ROTATION);
+}
+
+// unwinding cable
+void stepDown() {
+//  Serial.println("unwinding cable");
+  digitalWrite(DIR, HIGH);
+  stepNow(STEPS_PER_ROTATION);
+}
+
 void setup() {
   Serial.begin(115200);
   WiFi.begin(ssid);
@@ -78,7 +122,7 @@ void setup() {
 
   // osc setup
   osc.begin(recv_port);
-  osc.subscribe("/client/1", [](OscMessage& m)
+  osc.subscribe("/client/0", [](OscMessage& m)
   {
     oscMessage = m.arg<String>(0);
   });
@@ -86,6 +130,13 @@ void setup() {
   // led setup
   strip.Begin();
   strip.Show();
+
+  // motor setup
+  pinMode(STEP, OUTPUT);
+  pinMode(DIR, OUTPUT);
+  pinMode(MS1, OUTPUT);
+  pinMode(MS2, OUTPUT);
+  pinMode(MS3, OUTPUT);
 
   // threads setup
   int osc_thread = pthread_create(&threads[0], NULL, getOscMessage, NULL);
