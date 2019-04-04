@@ -22,7 +22,7 @@ char ssid[] = "BU Guest (unencrypted)"; //  your network SSID (name)
 const uint16_t port0 = 8090;
 const uint16_t port1 = 8099;
 const char * host0 = "10.192.237.85";
-const char * host1 = "10.192.235.138";
+const char * host1 = "10.192.234.231";
 int status = WL_IDLE_STATUS;
 
 /*
@@ -227,7 +227,8 @@ void *touchosc_server (void *) {
       
     } else if ( tag.equals("toggle1") ) {
       // 1: pause, 0: play
-      playing = !playing;
+      if(val == 1.0) playing = false;
+      else playing = true;
       if(playing) Serial.println("playing");
       else Serial.println("pause");
       
