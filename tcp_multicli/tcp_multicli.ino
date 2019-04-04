@@ -18,7 +18,7 @@ char ssid[] = "BU Guest (unencrypted)"; //  your network SSID (name)
 const uint16_t port0 = 8090;
 const uint16_t port1 = 8099;
 const char * host0 = "10.192.237.85";
-const char * host1 = "10.192.235.138";
+const char * host1 = "10.192.234.231";
 
 const uint16_t maxSaturation = 128;
 
@@ -43,6 +43,7 @@ void setup() {
     delay(5000);
   }
   Serial.println("Connected to wifi");
+ 
 
   /**
    * Inidialize two threads for each client
