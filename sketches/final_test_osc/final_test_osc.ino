@@ -21,7 +21,7 @@ pthread_t threads[3];
 
 // Wifi variables
 const char* ssid = "BU Guest (unencrypted)";
-WiFiServer wifiServer(8090);//8090 for board 1, 8095 for board 2
+WiFiServer wifiServer(8099);//8090 for board 1, 8095 for board 2
 String entry = "\0";
 String prevEntry = "\0";
 
@@ -30,9 +30,10 @@ OscWiFi osc;
 const char* host = "10.192.228.184";
 const int recv_port = 3000;
 const int send_port = 3111;
+String osc_str = "";
 
 // Motor variables
-int speed = 4000; // 4000 - 10000
+int speed = 10000; // 4000 - 10000
 int brightness = 0;
 int windMode = 0;
 
@@ -44,61 +45,48 @@ int r, g, b;
 
 void * clientReceive(void *) {
   while(1) {
-    WiFiClient client = wifiServer.available();
-    if (client) {
-  
-      while (client.connected()) {
-  
-        while (client.available() > 0) {
-          char c = client.read();
-          client.write(c);
-          entry.concat(c);
-        }
-
-        if(entry.length() != 13) {
-          entry = prevEntry;
-        }
-        
-        delay(10);
-      }
 
       // osc
       osc.parse();
-   
-      StaticJsonBuffer<200> jsonBuffer;
-      JsonObject& obj = jsonBuffer.createObject();
+      parsing(osc_str);
 
-      parsing(obj);
       
-      r = getR(obj);
-      b = getB(obj);
-      g = getG(obj);
-      speed = map(getRPM(obj), 0, 10, 10000, 4000);
-      speed = constrain(speed, 4000, 10000);
-//      speed = 4000; 
-      windMode = getDir(obj);
-      prevEntry = entry;
-      entry = "\0";
-      jsonBuffer.clear();
-      Serial.print("rpm: "); Serial.println(getRPM(obj));
-      Serial.print("speed: "); Serial.println(speed);
-      client.stop();
-    } 
-    delay(10);
+//      r = getR(obj);
+//      b = getB(obj);
+//      g = getG(obj);
+//      speed = map(getRPM(obj), 0, 10, 10000, 4000);
+//      speed = constrain(speed, 4000, 10000);
+//      windMode = getDir(obj);
+//      prevEntry = entry;
+//      entry = "\0";
+//      jsonBuffer.clear();
+      delay(10);
   }
 }
 
-void parsing(JsonObject& obj ) {
-  Serial.print("Entry: ");
-  Serial.println(entry);
+void parsing( String s ) {
+  String red = s.substring(0,3);
+  char *r = red[0];
+//  string blue = s.substring(3, 6);
+//  tring green = s.substring(6, 9);
+//  String rpm = s.substring(9, 12);
+//  String dir = s.substring(12);
 
-  obj["r"] = entry.substring(0, 3);
-  obj["b"] = entry.substring(3, 6);
-  obj["g"] = entry.substring(6, 9);
-  obj["rpm"] = entry.substring(9, 12);
-  obj["dir"] = entry.substring(12);
+  
+  int z = atoi(r);
+//  g = atoi(;
+//  b = blue.toInt();
+//  speed = map(rpm.toInt(), 0, 10, 10000, 4000);
+//  speed = constrain(speed, 4000, 10000);
+//  windMode = dir.toInt();
 
-//  obj.prettyPrintTo(Serial);
+  
+      Serial.println("red " + red); 
+      Serial.println(" r " + z);
+//      Serial.println("green " + green); 
+//      Serial.println(" g " + g);
+//      Serial.println("blue " + blue); 
+//      Serial.println(" b " + b);
 
 }
 
@@ -148,14 +136,14 @@ void stepNow(int totalSteps) {
 
 // winding cable back up
 void stepUp() {
-  Serial.println("winding cable up");
+//  Serial.println("winding cable up");
   digitalWrite(DIR, LOW);
   stepNow(STEPS_PER_ROTATION);
 }
 
 // unwinding cable
 void stepDown() {
-  Serial.println("unwinding cable");
+//  Serial.println("unwinding cable");
   digitalWrite(DIR, HIGH);
   stepNow(STEPS_PER_ROTATION);
 }
@@ -177,10 +165,8 @@ void setup() {
 
   // Wifi config
   WiFi.begin(ssid);
-  
   while (WiFi.status() != WL_CONNECTED) { Serial.print("."); delay(500); }
   Serial.print("WiFi connected, IP = "); Serial.println(WiFi.localIP());
-  wifiServer.begin();
 
   // ArduinoOSC
   osc.begin(recv_port);
@@ -192,8 +178,8 @@ void setup() {
 //        Serial.print(m.size()); Serial.print(" ");
 //        Serial.print(m.address()); Serial.print(" ");
 //        Serial.print(m.arg<String>(0)); Serial.println();
-    String s = m.arg<String>(0);
-    
+      osc_str = m.arg<String>(0);
+      Serial.println("msg: " + osc_str);
   });
 
   // Motor config
