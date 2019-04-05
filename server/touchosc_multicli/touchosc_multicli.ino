@@ -19,8 +19,8 @@ int inc1 = 0;
 char ssid[] = "BU Guest (unencrypted)"; //  your network SSID (name)
 const uint16_t port0 = 8090;
 const uint16_t port1 = 8099;
-const char * host0 = "10.192.237.85";
-const char * host1 = "10.192.234.231";
+const char * host0 = "10.192.236.165";
+const char * host1 = "10.192.237.85";
 int status = WL_IDLE_STATUS;
 
 /*
@@ -54,6 +54,7 @@ int d1 = 0;
 uint8_t globalR = 0;
 uint8_t globalG = 0;
 uint8_t globalB = 0;
+unsigned long prevGlowTime = 0;
 
 void setup() {
   // starting serial monitor
@@ -119,7 +120,7 @@ void *connection0(void *) {
         res = msg;
         
         Serial.println(res);
-        osc.send(host0, osc_port0, "/client/1", res);
+        osc.send(host0, osc_port0, "/client/0", res);
       }
     }
 
@@ -198,6 +199,12 @@ void *touchosc_server (void *) {
     } else if ( tag.equals("preset4") ) {
       if(val == 1.0) {
         preset = 4;
+        prevGlowTime = inc0;
+        if(randomMode) {
+          globalR = random(0, maxSaturation);
+          globalG = random(0, maxSaturation);
+          globalB = random(0, maxSaturation);
+        }
         Serial.println("preset4");
       }
     } else if ( tag.equals("preset5") ) {
@@ -321,7 +328,7 @@ void switchPresets(int clientNum, int inc) {
           g = 0;
           b = 0;
         }
-      } else {
+      } else if (clientNum == 1) {
         if(inc % 2 == 1) {
           if(randomMode) {
             r = random(0, maxSaturation);
@@ -348,12 +355,26 @@ void switchPresets(int clientNum, int inc) {
       r = fade(inc, 0.2, globalR);
       g = fade(inc, 0.2, globalG);
       b = fade(inc, 0.2, globalB);
-      Serial.print(r); Serial.print(" "); Serial.print(g); Serial.print(" "); Serial.println(b);
+//      Serial.print(r); Serial.print(" "); Serial.print(g); Serial.print(" "); Serial.println(b);
       break;
     }
 
     case 4: {
+      
       // pulsating or glowing
+      int ticks = 5;
+      r = map(inc, prevGlowTime, prevGlowTime + ticks, globalR, 0);
+      g = map(inc, prevGlowTime, prevGlowTime + ticks, globalG, 0);
+      b = map(inc, prevGlowTime, prevGlowTime + ticks, globalB, 0);
+      if(r == 0 && g == 0 && b == 0) {
+        prevGlowTime = inc;
+        if(randomMode) {
+           globalR = random(0, maxSaturation);
+           globalG = random(0, maxSaturation);
+           globalB = random(0, maxSaturation);
+        }
+      }
+      Serial.print(r); Serial.print(" "); Serial.print(g); Serial.print(" "); Serial.println(b);
       
       break;
     }
@@ -374,10 +395,7 @@ void switchPresets(int clientNum, int inc) {
   }
 }
 
-
-/**
- * Fade function
- */
+// fade function
 uint8_t fade(int inc, float rate, uint8_t color) {
   uint8_t brightness = 0;
   brightness = (sin((float)inc * rate) + 1) * color / 2;

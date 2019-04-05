@@ -37,6 +37,7 @@ const int MS3 = 14;
 const int STEPS_PER_ROTATION = 200;
 int speed = 0;
 int direction = 0;
+int steps = STEPS_PER_ROTATION;
 
 void * getOscMessage ( void * ) {
   while(true) {
@@ -79,39 +80,43 @@ void* ledControl(void *) {
 }
 
 // Motor control
-void* motorControl(void *) {
+void * motorControl(void *) {
   while(1) {
-    if (direction == 0) {
-      stepUp();
-    } else if ( direction == 1) {
-      stepDown();
-    } else {
-      
+    switch (direction) {
+      case 0: {
+        steps = STEPS_PER_ROTATION;
+        digitalWrite(DIR, LOW);
+        break;
+      }
+
+      case 1: {
+        steps = STEPS_PER_ROTATION;
+        digitalWrite(DIR, HIGH);
+        break;
+      }
+
+      case 2: {
+        steps = 0;
+        break;
+      }
+
+      default: {
+        Serial.println("wrong direction");
+      }
     }
+
+    stepNow(steps);
   }
 }
 
 void stepNow(int totalSteps) {
   for (int i = 0; i < totalSteps; ++i) {
+    if(direction == 2) break;
     digitalWrite(STEP, HIGH);
     delayMicroseconds(speed);
     digitalWrite(STEP, LOW);
     delayMicroseconds(speed);
   }
-}
-
-// winding cable back up
-void stepUp() {
-//  Serial.println("winding cable up");
-  digitalWrite(DIR, LOW);
-  stepNow(STEPS_PER_ROTATION);
-}
-
-// unwinding cable
-void stepDown() {
-//  Serial.println("unwinding cable");
-  digitalWrite(DIR, HIGH);
-  stepNow(STEPS_PER_ROTATION);
 }
 
 void setup() {
